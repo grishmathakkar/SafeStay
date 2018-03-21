@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import SafeStay.dal.EndUsersDao;
-import SafeStay.model.EndUsers;
+import SafeStay.dal.*;
+import SafeStay.model.*;
 
 @WebServlet("/userdelete")
 public class UserDelete extends HttpServlet {
@@ -48,10 +48,10 @@ public class UserDelete extends HttpServlet {
             messages.put("title", "Invalid UserName");
             messages.put("disableSubmit", "true");
         } else {
-        	// Delete the BlogUser.
 	        EndUsers endUser = new EndUsers(userName);
 	        try {
 	        	endUser = endUsersDao.delete(userName);
+
 	        	// Update the message.
 		        if (endUser == null) {
 		            messages.put("title", "Successfully deleted " + userName);

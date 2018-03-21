@@ -24,6 +24,34 @@ public class ReviewsDao {
 		return instance;
 	}
 
+	public Reviews updateContent(int reviewid, String newContent) throws SQLException {
+		String updateReview = "UPDATE Review SET Content=? WHERE ReviewId=?;";
+		Connection connection = null;
+		PreparedStatement updateStmt = null;
+		try {
+			connection = connectionManager.getConnection();
+			updateStmt = connection.prepareStatement(updateReview);
+			updateStmt.setString(1, newContent);
+			updateStmt.setInt(2, reviewid);
+
+			updateStmt.executeUpdate();
+			Reviews reviews = new Reviews(reviewid);
+			// Update the Expiration param before returning to the caller.
+			reviews.setContent(newContent);
+			return reviews;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if (connection != null) {
+				connection.close();
+			}
+			if (updateStmt != null) {
+				updateStmt.close();
+			}
+		}
+	}
+
 	public Reviews create(Reviews review) throws SQLException {
 		// Grishma Thakkar
 		String createReview = "INSERT INTO Review(Content, UserName, Location) " + "VALUES(?,?,?);";
@@ -190,14 +218,14 @@ public class ReviewsDao {
 
 	}
 
-	public Reviews delete(Reviews review) throws SQLException {
+	public Reviews delete(int reviewid) throws SQLException {
 		String delReview = "DELETE FROM Review WHERE ReviewId=?;";
 		Connection connection = null;
 		PreparedStatement deleteStmt = null;
 		try {
 			connection = connectionManager.getConnection();
 			deleteStmt = connection.prepareStatement(delReview);
-			deleteStmt.setInt(1, review.getReviewId());
+			deleteStmt.setInt(1, reviewid);
 			deleteStmt.executeUpdate();
 			return null;
 		} catch (SQLException e) {

@@ -18,7 +18,8 @@
                 <th>Content</th>
                 <th>Username</th>
                 <th>Location</th>
-                <th>Delete BlogPost</th>
+                <th>Delete</th>
+                <th>Update</th>
             </tr>
             <c:forEach items="${reviews}" var="review" >
                 <tr>
@@ -27,6 +28,7 @@
                     <td><c:out value="${review.getEndusers().getUserName()}" /></td>
                     <td><c:out value="${review.getAddress().getLocation()}" /></td>
                     <td><a href="deletereview?reviewid=<c:out value="${review.getReviewId()}"/>">Delete</a></td>
+                	<td><a href="reviewupdate?reviewid=<c:out value="${review.getReviewId()}"/>">Update</a></td>
                 </tr>
             </c:forEach>
        </table>

@@ -8,11 +8,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Delete a Review</title>
+<title>Deleted a Review</title>
 </head>
 <body>
 	<h1>${messages.title}</h1>
-	<br/><br/>
-	
+	<form action="deletereview" method="post">
+		<p>
+			<div <c:if test="${messages.disableSubmit}">style="display:none"</c:if>>
+				<label for="reviewid">ReviewID</label>
+				<input id="reviewid" name="reviewid" value="${fn:escapeXml(param.reviewid)}">
+			</div>
+		</p>
+		<p>
+			<span id="submitButton" <c:if test="${messages.disableSubmit}">style="display:none"</c:if>>
+			<input type="submit">
+			</span>
+		</p>
+	</form>
 </body>
 </html>

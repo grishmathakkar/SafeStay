@@ -43,23 +43,27 @@ public class DeleteReview extends HttpServlet {
         req.setAttribute("messages", messages);
 
         // Retrieve and validate name.
-        String reviewId = req.getParameter("ReviewId");
-        
-        Reviews review = new Reviews(Integer.parseInt(reviewId));
-        try {
-        	review = reviewsDao.delete(review);
-        	
-        	// Update the message.
-	        if (review == null) {
-	            messages.put("title", "Successfully deleted ");
-	            //messages.put("disableSubmit", "true");
-	        } else {
-	        	messages.put("title", "Failed to delete ");
-	        	//messages.put("disableSubmit", "false");
+        String reviewid = req.getParameter("reviewid");
+        if (reviewid == null || reviewid.trim().isEmpty()) {
+            messages.put("title", "Invalid reviewid");
+            messages.put("disableSubmit", "true");
+        } else {
+	        Reviews review = new Reviews(Integer.parseInt(reviewid));
+	        try {
+	        	review = reviewsDao.delete(Integer.parseInt(reviewid));
+
+	        	// Update the message.
+		        if (review == null) {
+		            messages.put("title", "Successfully deleted " + reviewid);
+		            messages.put("disableSubmit", "true");
+		        } else {
+		        	messages.put("title", "Failed to delete " + reviewid);
+		        	messages.put("disableSubmit", "false");
+		        }
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new IOException(e);
 	        }
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new IOException(e);
         }
         
         /*if (reviewId == null || reviewId.trim().isEmpty()) {

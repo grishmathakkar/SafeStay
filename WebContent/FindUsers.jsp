@@ -39,6 +39,8 @@
 			<th>Phone</th>
 			<th>DoB</th>
 			<th>DeleteUser</th>
+			<th>Reviews</th>
+			<th>Recommendations</th>
 		</tr>
 <%-- 		<c:forEach items="${endUsers}" var="endUser"> --%>
 			<tr>
@@ -53,6 +55,7 @@
 						pattern="yyyy-MM-dd" /></td>
 				<td><a href="userdelete?username=<c:out value="${endUsers.getUserName()}"/>">Delete</a></td>
 				<td><a href="userreview?username=<c:out value="${endUsers.getUserName()}"/>">Reviews</a></td>
+				<td><a href="userrecommendations?username=<c:out value="${endUsers.getUserName()}"/>">Recommendations</a></td>
 			</tr>
 <%-- 		</c:forEach> --%>
 	</table>

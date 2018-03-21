@@ -154,7 +154,7 @@ public class AdministratorsDao extends UsersDao {
 			deleteStmt.setString(1, username);
 			deleteStmt.executeUpdate();
 			Administrators admin = new Administrators(username);
-			super.delete(admin);
+			super.delete(username);
 			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();

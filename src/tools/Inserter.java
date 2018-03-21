@@ -66,7 +66,7 @@ public class Inserter {
 
 			Users user1 = new Users("sonal", "singh", "Sonal", "Singh", 23, "singh.son@husky.neu.edu", "2384729384");
 			user1 = usersDao.create(user1);
-			user1 = usersDao.delete(user1);
+			user1 = usersDao.delete(user1.getUserName());
 
 			// Test End Users
 			EndUsersDao endUsersDao = EndUsersDao.getInstance();
@@ -166,7 +166,7 @@ public class Inserter {
 			System.out.println(reviewsList.size());
 			reviewsList = reviewsDao.getReviewsByUserName(reviews.getEndusers().getUserName());
 			System.out.println(reviewsList.size());
-			reviews = reviewsDao.delete(reviews);
+			reviews = reviewsDao.delete(reviews.getReviewId());
 
 			// Test Recommendations
 			RecommendationsDao recommendationsDao = RecommendationsDao.getInstance();
@@ -183,7 +183,7 @@ public class Inserter {
 			recommendationsList = recommendationsDao
 					.getRecommendationsByUserName(recommendations.getEndusers().getUserName());
 			System.out.println(recommendationsList.size());
-			recommendations = recommendationsDao.delete(recommendations);
+			recommendations = recommendationsDao.delete(recommendations.getRecommendationId());
 
 			// Test Requests
 			RequestsDao requestsDao = RequestsDao.getInstance();

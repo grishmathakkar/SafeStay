@@ -1,45 +1,44 @@
 package SafeStay.dal;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import SafeStay.model.*;
-import SafeStay.dal.ConnectionManager;
 
-public class UsersDao {
+public class EndUsersDao extends UsersDao {
 	protected ConnectionManager connectionManager;
 	// Single pattern: instantiation is limited to one object.
-	private static UsersDao instance = null;
+	private static EndUsersDao instance = null;
 
-	protected UsersDao() {
+	protected EndUsersDao() {
 		connectionManager = new ConnectionManager();
 	}
 
-	public static UsersDao getInstance() {
+	public static EndUsersDao getInstance() {
 		if (instance == null) {
-			instance = new UsersDao();
+			instance = new EndUsersDao();
 		}
 		return instance;
 	}
 
-	public Users create(Users user) throws SQLException {
-		String insertUser = "INSERT INTO Users(UserName,UserPassword,FirstName,LastName, Age,Email,Phone) VALUES(?,?,?,?,?,?,?);";
+	public EndUsers create(EndUsers endUser) throws SQLException {
+		UsersDao usersDao = UsersDao.getInstance();
+		Users users = new Users(endUser.getUserName(), endUser.getPassword(), endUser.getFirstName(),
+				endUser.getLastName(), endUser.getAge(), endUser.getEmail(), endUser.getPhone());
+		users = usersDao.create(users);
+		String insertUser = "INSERT INTO EndUsers(UserName,DateOfBirth) VALUES(?,?);";
 		Connection connection = null;
 		PreparedStatement insertStmt = null;
 		try {
 			connection = connectionManager.getConnection();
 			insertStmt = connection.prepareStatement(insertUser);
-			insertStmt.setString(1, user.getUserName());
-			insertStmt.setString(2, user.getPassword());
-			insertStmt.setString(3, user.getFirstName());
-			insertStmt.setString(4, user.getLastName());
-			insertStmt.setInt(5, user.getAge());
-			insertStmt.setString(6, user.getEmail());
-			insertStmt.setString(7, user.getPhone());
+			insertStmt.setString(1, endUser.getUserName());
+			insertStmt.setDate(2, endUser.getDateOfBirth());
 			insertStmt.executeUpdate();
-			return user;
+			return endUser;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
@@ -53,8 +52,10 @@ public class UsersDao {
 		}
 	}
 
-	public Users getUserByUserName(String userName) throws SQLException {
-		String selectUser = "SELECT UserName,UserPassword,FirstName,LastName, Age,Email,Phone FROM Users WHERE UserName=?;";
+	public EndUsers getEndUserByUserName(String userName) throws SQLException {
+		String selectUser = "SELECT Users.UserName,UserPassword,FirstName,LastName, Age,Email,Phone,DateOfBirth "
+				+ "FROM EndUsers INNER JOIN Users " + "  ON  EndUsers.UserName = Users.UserName "
+				+ "WHERE EndUsers.UserName=?;";
 		Connection connection = null;
 		PreparedStatement selectStmt = null;
 		ResultSet results = null;
@@ -62,23 +63,18 @@ public class UsersDao {
 			connection = connectionManager.getConnection();
 			selectStmt = connection.prepareStatement(selectUser);
 			selectStmt.setString(1, userName);
-			// Note that we call executeQuery(). This is used for a SELECT statement
-			// because it returns a result set. For more information, see:
-			// http://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html
-			// http://docs.oracle.com/javase/7/docs/api/java/sql/ResultSet.html
 			results = selectStmt.executeQuery();
-			// You can iterate the result set (although the example below only retrieves
-			// the first record). The cursor is initially positioned before the row.
-			// Furthermore, you can retrieve fields by name and by type.
 			if (results.next()) {
 				String resultUserName = results.getString("UserName");
-				String password = results.getString("UserPassword");
-				String firstName = results.getString("FirstName");
-				String lastName = results.getString("LastName");
-				int age = results.getInt("Age");
-				String email = results.getString("Email");
-				String phone = results.getString("Phone");
-				Users user = new Users(resultUserName, password, firstName, lastName, age, email, phone);
+				String resultPassword = results.getString("UserPassword");
+				String resultFirstName = results.getString("FirstName");
+				String resultLastName = results.getString("LastName");
+				int resultAge = results.getInt("Age");
+				String resultEmail = results.getString("Email");
+				String resultPhone = results.getString("Phone");
+				Date resultDob = results.getDate("DateOfBirth");
+				EndUsers user = new EndUsers(resultUserName, resultPassword, resultFirstName, resultLastName, resultAge,
+						resultEmail, resultPhone, resultDob);
 				return user;
 			}
 		} catch (SQLException e) {
@@ -98,16 +94,17 @@ public class UsersDao {
 		return null;
 	}
 
-	public Users delete(Users user) throws SQLException {
-		String deleteUser = "DELETE FROM Users WHERE UserName=?;";
+	public EndUsers delete(String username) throws SQLException {
+		String deleteUser = "DELETE FROM EndUsers WHERE UserName=?;";
 		Connection connection = null;
 		PreparedStatement deleteStmt = null;
 		try {
 			connection = connectionManager.getConnection();
 			deleteStmt = connection.prepareStatement(deleteUser);
-			deleteStmt.setString(1, user.getUserName());
+			deleteStmt.setString(1, username);
 			deleteStmt.executeUpdate();
-
+			EndUsers user = new EndUsers(username);
+			super.delete(username);
 			// Return null so the caller can no longer operate on the Persons instance.
 			return null;
 		} catch (SQLException e) {

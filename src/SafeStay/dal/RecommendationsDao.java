@@ -229,14 +229,14 @@ public class RecommendationsDao {
 		}
 	}
 
-	public Recommendations delete(Recommendations recommendation) throws SQLException {
+	public Recommendations delete(int recommendationid) throws SQLException {
 		String delRecom = "DELETE FROM Recommendation WHERE RecommendationId=?;";
 		Connection connection = null;
 		PreparedStatement deleteStmt = null;
 		try {
 			connection = connectionManager.getConnection();
 			deleteStmt = connection.prepareStatement(delRecom);
-			deleteStmt.setInt(1, recommendation.getRecommendationId());
+			deleteStmt.setInt(1, recommendationid);
 			deleteStmt.executeUpdate();
 			// Return null so the caller can no longer operate on the Persons instance.
 			return null;
