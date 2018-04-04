@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="Prachi" created="Sat Mar 24 13:07:47 EDT 2018" guiVersion="4.9.0.M1" id="1521911549773" licenseCode="Unlicensed" name="pm5-1" showComponentDetails="true">
+<Global>
+<Metadata id="Metadata0">
+<Record fieldDelimiter=";" name="Incidents" recordDelimiter="\n" type="delimited">
+<Field format="yyyy-MM-dd HH:mm:ss" name="OccuredOnDate" size="19" type="date"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata2">
+<Record fieldDelimiter=";" name="Incidents" recordDelimiter="\n" type="delimited">
+<Field format="MM" name="OccuredOnMonth" size="19" trim="true" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata1">
+<Record fieldDelimiter="|" name="recordName1" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field format="MM" name="OccuredOnMonth" type="integer"/>
+<Field name="Count" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata3">
+<Record fieldDelimiter="|" name="recordName1_1" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field format="MM" name="OccuredOnMonth" type="integer"/>
+<Field name="Count" type="integer"/>
+</Record>
+</Metadata>
+<Connection database="MYSQL" dbURL="jdbc:mysql://localhost:3306/SafeStay" id="JDBC0" jdbcSpecific="MYSQL" name="pm5Connection" password="Prachi26" type="JDBC" user="root"/>
+<GraphParameters>
+<GraphParameterFile fileURL="workspace.prm"/>
+</GraphParameters>
+<Dictionary/>
+</Global>
+<Phase number="0">
+<Node aggregateKey="OccuredOnMonth" guiName="Aggregate" guiX="18" guiY="75" id="AGGREGATE" mapping="$OccuredOnMonth:=$OccuredOnMonth;$Count:=count();" sorted="false" type="AGGREGATE"/>
+<Node dbConnection="JDBC0" guiName="DBInputTable" guiX="-416" guiY="75" id="DBINPUT_TABLE" type="DB_INPUT_TABLE">
+<attr name="sqlQuery"><![CDATA[Select Incidents.OccuredOnDate from Incidents]]></attr>
+</Node>
+<Node guiName="FastSort" guiX="196" guiY="205" id="FAST_SORT" sortKey="OccuredOnMonth(a)" type="FAST_SORT"/>
+<Node guiName="Reformat" guiX="-209" guiY="75" id="REFORMAT" type="REFORMAT">
+<attr name="transform"><![CDATA[//#CTL2
+
+// Transforms input record into output record.
+function integer transform() {
+	$out.0.OccuredOnMonth = getMonth($in.0.OccuredOnDate);
+
+	return ALL;
+}
+
+// Called during component initialization.
+// function boolean init() {}
+
+// Called during each graph run before the transform is executed. May be used to allocate and initialize resources
+// required by the transform. All resources allocated within this method should be released
+// by the postExecute() method.
+// function void preExecute() {}
+
+// Called only if transform() throws an exception.
+// function integer transformOnError(string errorMessage, string stackTrace) {}
+
+// Called during each graph run after the entire transform was executed. Should be used to free any resources
+// allocated within the preExecute() method.
+// function void postExecute() {}
+
+// Called to return a user-defined error message when an error occurs.
+// function string getMessage() {}
+]]></attr>
+</Node>
+<Node existingSheetsActions="REMOVE_SHEETS" fileURL="5-1.xlsx" guiName="SpreadsheetDataWriter" guiX="360" guiY="75" id="SPREADSHEET_DATA_WRITER" type="SPREADSHEET_WRITER" writeMode="OVERWRITE_SHEET_IN_MEMORY"/>
+<Edge fromNode="AGGREGATE:0" guiBendpoints="" guiRouter="Manhattan" id="Edge5" inPort="Port 0 (in)" metadata="Metadata1" outPort="Port 0 (out)" toNode="FAST_SORT:0"/>
+<Edge fromNode="DBINPUT_TABLE:0" guiBendpoints="" guiRouter="Manhattan" id="Edge3" inPort="Port 0 (in)" metadata="Metadata0" outPort="Port 0 (out)" toNode="REFORMAT:0"/>
+<Edge fromNode="FAST_SORT:0" guiBendpoints="" guiRouter="Manhattan" id="Edge6" inPort="Port 0 (input)" metadata="Metadata3" outPort="Port 0 (out)" toNode="SPREADSHEET_DATA_WRITER:0"/>
+<Edge fromNode="REFORMAT:0" guiBendpoints="" guiRouter="Manhattan" id="Edge4" inPort="Port 0 (in)" metadata="Metadata2" outPort="Port 0 (out)" toNode="AGGREGATE:0"/>
+</Phase>
+</Graph>

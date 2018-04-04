@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="Prachi" created="Sat Mar 24 13:07:47 EDT 2018" guiVersion="4.9.0.M1" id="1521919948780" licenseCode="Unlicensed" name="5-2" showComponentDetails="true">
+<Global>
+<Metadata id="Metadata0">
+<Record fieldDelimiter=";" name="Address" previewAttachmentCharset="UTF-8" recordDelimiter="\n" type="delimited">
+<Field name="Street" size="255" type="string"/>
+<Field name="location" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata7">
+<Record fieldDelimiter=";" name="Address_1" previewAttachmentCharset="UTF-8" recordDelimiter="\n" type="delimited">
+<Field name="Street" size="255" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata8">
+<Record fieldDelimiter=";" name="Address_2" previewAttachmentCharset="UTF-8" recordDelimiter="\n" type="delimited">
+<Field name="Street" size="255" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata10">
+<Record fieldDelimiter="|" name="Address_incidents" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="Incident" type="integer"/>
+<Field name="location" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata15">
+<Record fieldDelimiter="|" name="Address_incidents_1" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="Incident" type="integer"/>
+<Field name="location" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata1">
+<Record fieldDelimiter="," label="Analyze Boston" name="Analyze_Boston" previewAttachment="C:/Users/Prachi/Desktop/DBMS/Analyze Boston.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿_id" name="_id" type="integer"/>
+<Field label="NAME" name="NAME" type="string"/>
+<Field label="ADDRESS" name="ADDRESS" type="string"/>
+<Field label="ZIPCODE" name="ZIPCODE" type="integer"/>
+<Field label="NEIGH" name="NEIGH" type="string"/>
+<Field label="XCOORD" name="XCOORD" type="string"/>
+<Field label="YCOORD" name="YCOORD" type="string"/>
+<Field eofAsDelimiter="true" label="Location" name="Location" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata6">
+<Record fieldDelimiter="," label="Analyze Boston" name="Analyze_Boston_1" previewAttachment="C:/Users/Prachi/Desktop/DBMS/Analyze Boston.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿_id" name="_id" type="integer"/>
+<Field label="NAME" name="NAME" type="string"/>
+<Field label="ADDRESS" name="ADDRESS" type="string"/>
+<Field label="ZIPCODE" name="ZIPCODE" type="integer"/>
+<Field label="NEIGH" name="NEIGH" type="string"/>
+<Field label="XCOORD" name="XCOORD" type="string"/>
+<Field label="YCOORD" name="YCOORD" type="string"/>
+<Field eofAsDelimiter="true" label="Location" name="Location" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata12">
+<Record fieldDelimiter=";" name="Incidents" recordDelimiter="\n" type="delimited">
+<Field name="IncidentId" size="11" type="integer"/>
+<Field name="location" size="255" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata9">
+<Record fieldDelimiter=";" name="Incidents" previewAttachmentCharset="UTF-8" recordDelimiter="\n" type="delimited">
+<Field name="location" size="255" type="string"/>
+<Field name="IncidentId" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata14">
+<Record fieldDelimiter=";" name="Incidents" recordDelimiter="\n" type="delimited">
+<Field name="IncidentId" size="11" type="integer"/>
+<Field name="location" size="255" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata11">
+<Record fieldDelimiter="|" name="numberofincidents" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="location" type="string"/>
+<Field name="incidentid" type="integer"/>
+<Field name="countI" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata2">
+<Record fieldDelimiter="|" name="recordName1" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="Street" type="string"/>
+<Field name="count" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata3">
+<Record fieldDelimiter="|" name="recordName2" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="Address" type="string"/>
+<Field name="count" trim="true" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata4">
+<Record fieldDelimiter="|" name="recordName3" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="street" type="string"/>
+<Field name="hcount" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata5">
+<Record fieldDelimiter="|" name="recordName4" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="Street" type="string"/>
+<Field name="NumberOfIncidents" type="integer"/>
+<Field name="NumberOfHospitals" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata13">
+<Record fieldDelimiter="|" name="recordName5" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="Street" type="string"/>
+<Field name="NumberOfIncidents" type="integer"/>
+</Record>
+</Metadata>
+<Connection database="MYSQL" dbURL="jdbc:mysql://hostname:3306/database" id="JDBC0" jdbcSpecific="MYSQL" name="NewConnection" type="JDBC"/>
+<Connection database="MYSQL" dbURL="jdbc:mysql://localhost:3306/SafeStay" id="JDBC1" jdbcSpecific="MYSQL" name="pm5connection" password="Prachi26" type="JDBC" user="root"/>
+<GraphParameters>
+<GraphParameterFile fileURL="workspace.prm"/>
+</GraphParameters>
+<Dictionary/>
+</Global>
+<Phase number="0">
+<Node aggregateKey="location" guiName="Aggregate" guiX="1000" guiY="149" id="AGGREGATE" mapping="$Street:=$location;$NumberOfIncidents:=count();" type="AGGREGATE"/>
+<Node aggregateKey="Location" guiName="Aggregate" guiX="387" guiY="637" id="AGGREGATE1" mapping="$street:=$Location;$hcount:=count();" type="AGGREGATE"/>
+<Node dbConnection="JDBC1" guiName="DBInputTable" guiX="56" guiY="301" id="DBINPUT_TABLE" type="DB_INPUT_TABLE">
+<attr name="sqlQuery"><![CDATA[Select Address.Street,Address.location from Address]]></attr>
+</Node>
+<Node dbConnection="JDBC1" guiName="DBInputTable" guiX="62" guiY="81" id="DBINPUT_TABLE1" type="DB_INPUT_TABLE">
+<attr name="sqlQuery"><![CDATA[Select Incidents.IncidentId, Incidents.location from Incidents]]></attr>
+</Node>
+<Node guiName="ExtHashJoin" guiX="465" guiY="360" id="EXT_HASH_JOIN" joinKey="$Street=$street" type="EXT_HASH_JOIN">
+<attr name="transform"><![CDATA[//#CTL2
+
+// Transforms input record into output record.
+function integer transform() {
+	$out.0.Street = $in.0.Street;
+	$out.0.NumberOfIncidents = $in.0.NumberOfIncidents;
+	$out.0.NumberOfHospitals = $in.1.hcount;
+
+	return ALL;
+}
+
+// Called during component initialization.
+// function boolean init() {}
+
+// Called during each graph run before the transform is executed. May be used to allocate and initialize resources
+// required by the transform. All resources allocated within this method should be released
+// by the postExecute() method.
+// function void preExecute() {}
+
+// Called only if transform() throws an exception.
+// function integer transformOnError(string errorMessage, string stackTrace) {}
+
+// Called during each graph run after the entire transform was executed. Should be used to free any resources
+// allocated within the preExecute() method.
+// function void postExecute() {}
+
+// Called to return a user-defined error message when an error occurs.
+// function string getMessage() {}
+]]></attr>
+</Node>
+<Node guiName="ExtHashJoin" guiX="551" guiY="128" id="EXT_HASH_JOIN1" joinKey="$location=$location" joinType="inner" type="EXT_HASH_JOIN">
+<attr name="transform"><![CDATA[//#CTL2
+
+// Transforms input record into output record.
+function integer transform() {
+	$out.0.location = $in.1.Street;
+	$out.0.Incident = $in.0.Incident;
+
+	return ALL;
+}
+
+// Called during component initialization.
+// function boolean init() {}
+
+// Called during each graph run before the transform is executed. May be used to allocate and initialize resources
+// required by the transform. All resources allocated within this method should be released
+// by the postExecute() method.
+// function void preExecute() {}
+
+// Called only if transform() throws an exception.
+// function integer transformOnError(string errorMessage, string stackTrace) {}
+
+// Called during each graph run after the entire transform was executed. Should be used to free any resources
+// allocated within the preExecute() method.
+// function void postExecute() {}
+
+// Called to return a user-defined error message when an error occurs.
+// function string getMessage() {}
+]]></attr>
+</Node>
+<Node guiName="FastSort" guiX="854" guiY="58" id="FAST_SORT" sortKey="location(a)" type="FAST_SORT"/>
+<Node guiName="FastSort" guiX="241" guiY="476" id="FAST_SORT1" sortKey="Location(a)" type="FAST_SORT"/>
+<Node existingSheetsActions="REMOVE_SHEETS" fileURL="5-2.xlsx" guiName="SpreadsheetDataWriter" guiX="753" guiY="318" id="SPREADSHEET_DATA_WRITER" type="SPREADSHEET_WRITER" writeMode="OVERWRITE_SHEET_IN_MEMORY"/>
+<Node dataPolicy="lenient" fileURL="C:/Users/Prachi/Desktop/DBMS/Analyze Boston.csv" guiName="UniversalDataReader" guiX="15" guiY="445" id="UNIVERSAL_DATA_READER" skipFirstLine="true" trim="true" type="DATA_READER"/>
+<Edge fromNode="AGGREGATE:0" guiBendpoints="" guiRouter="Manhattan" id="Edge24" inPort="Port 0 (driver)" metadata="Metadata13" outPort="Port 0 (out)" toNode="EXT_HASH_JOIN:0"/>
+<Edge fromNode="AGGREGATE1:0" guiBendpoints="" guiRouter="Manhattan" id="Edge11" inPort="Port 1 (slave)" metadata="Metadata4" outPort="Port 0 (out)" toNode="EXT_HASH_JOIN:1"/>
+<Edge fromNode="DBINPUT_TABLE:0" guiBendpoints="" guiRouter="Manhattan" id="Edge19" inPort="Port 1 (slave)" metadata="Metadata0" outPort="Port 0 (out)" toNode="EXT_HASH_JOIN1:1"/>
+<Edge fromNode="DBINPUT_TABLE1:0" guiBendpoints="" guiRouter="Manhattan" id="Edge23" inPort="Port 0 (driver)" metadata="Metadata10" outPort="Port 0 (out)" toNode="EXT_HASH_JOIN1:0"/>
+<Edge fromNode="EXT_HASH_JOIN:0" guiBendpoints="" guiRouter="Manhattan" id="Edge12" inPort="Port 0 (input)" metadata="Metadata5" outPort="Port 0 (out)" toNode="SPREADSHEET_DATA_WRITER:0"/>
+<Edge fromNode="EXT_HASH_JOIN1:0" guiBendpoints="" guiRouter="Manhattan" id="Edge20" inPort="Port 0 (in)" metadata="Metadata10" outPort="Port 0 (out)" toNode="FAST_SORT:0"/>
+<Edge fromNode="FAST_SORT:0" guiBendpoints="" guiRouter="Manhattan" id="Edge25" inPort="Port 0 (in)" metadata="Metadata15" outPort="Port 0 (out)" toNode="AGGREGATE:0"/>
+<Edge fromNode="FAST_SORT1:0" guiBendpoints="" guiRouter="Manhattan" id="Edge8" inPort="Port 0 (in)" metadata="Metadata6" outPort="Port 0 (out)" toNode="AGGREGATE1:0"/>
+<Edge fromNode="UNIVERSAL_DATA_READER:0" guiBendpoints="" guiRouter="Manhattan" id="Edge1" inPort="Port 0 (in)" metadata="Metadata1" outPort="Port 0 (output)" toNode="FAST_SORT1:0"/>
+</Phase>
+</Graph>

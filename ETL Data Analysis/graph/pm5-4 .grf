@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="Prachi" created="Sat Mar 24 13:07:47 EDT 2018" guiVersion="4.9.0.M1" id="1522020977319" licenseCode="Unlicensed" name="pm5-4 " showComponentDetails="true">
+<Global>
+<Metadata id="Metadata1">
+<Record fieldDelimiter=";" name="Address" recordDelimiter="\n" type="delimited">
+<Field name="Street" size="255" type="string"/>
+<Field name="location" size="255" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata0">
+<Record fieldDelimiter=";" name="Incidents" previewAttachmentCharset="UTF-8" recordDelimiter="\n" type="delimited">
+<Field name="IncidentId" size="11" type="integer"/>
+<Field name="location" size="255" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata12">
+<Record fieldDelimiter="," label="PM5-1" name="PM5" previewAttachment="C:/Users/Prachi/Desktop/PM5-1.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿ADDRESS" name="ADDRESS" type="string"/>
+<Field label="SCH_ID" name="SCH_ID" type="integer"/>
+<Field eofAsDelimiter="true" label="SCH_NAME" name="SCH_NAME" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata11">
+<Record fieldDelimiter="," label="PM5-1" name="PM5_1" previewAttachment="C:/Users/Prachi/Desktop/PM5-1.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿ADDRESS" name="ADDRESS" type="string"/>
+<Field label="SCH_ID" name="SCH_ID" type="integer"/>
+<Field eofAsDelimiter="true" label="SCH_NAME" name="SCH_NAME" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata10">
+<Record fieldDelimiter="," label="PM5-1" name="PM5_1" previewAttachment="C:/Users/Prachi/Desktop/PM5-1.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿ADDRESS" name="ADDRESS" type="string"/>
+<Field label="SCH_ID" name="SCH_ID" type="integer"/>
+<Field eofAsDelimiter="true" label="SCH_NAME" name="SCH_NAME" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata13">
+<Record fieldDelimiter="," label="PM5-1" name="PM5_1" previewAttachment="C:/Users/Prachi/Desktop/PM5-1.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿ADDRESS" name="ADDRESS" type="string"/>
+<Field eofAsDelimiter="true" label="SCH_ID" name="SCH_ID" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata15">
+<Record fieldDelimiter="," label="PM5-1" name="PM5_1" previewAttachment="C:/Users/Prachi/Desktop/PM5-1.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿ADDRESS" name="ADDRESS" type="string"/>
+<Field label="ADDRESS1" name="ADDRESS1" type="string"/>
+<Field eofAsDelimiter="true" label="SCH_ID" name="SCH_ID" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata14">
+<Record fieldDelimiter="," label="PM5-1" name="PM5_2" previewAttachment="C:/Users/Prachi/Desktop/PM5-1.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿ADDRESS" name="ADDRESS" type="string"/>
+<Field eofAsDelimiter="true" label="SCH_ID" name="SCH_ID" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata4">
+<Record fieldDelimiter="," name="Public_Schools" previewAttachment="C:/Users/Prachi/Desktop/DBMS/Public_Schools.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿X" name="X" type="number"/>
+<Field label="Y" name="Y" type="number"/>
+<Field label="OBJECTID_1" name="OBJECTID_1" type="integer"/>
+<Field label="OBJECTID" name="OBJECTID" type="integer"/>
+<Field label="BLDG_ID" name="BLDG_ID" type="integer"/>
+<Field label="BLDG_NAME" name="BLDG_NAME" type="string"/>
+<Field label="ADDRESS" name="ADDRESS" type="string"/>
+<Field label="CITY" name="CITY" type="string"/>
+<Field label="ZIPCODE" name="ZIPCODE" type="string"/>
+<Field label="CSP_SCH_ID" name="CSP_SCH_ID" type="integer"/>
+<Field label="SCH_ID" name="SCH_ID" type="integer"/>
+<Field label="SCH_NAME" name="SCH_NAME" type="string"/>
+<Field label="SCH_LABEL" name="SCH_LABEL" type="string"/>
+<Field label="SCH_TYPE" name="SCH_TYPE" type="string"/>
+<Field label="SHARED" name="SHARED" type="string"/>
+<Field label="COMPLEX" name="COMPLEX" type="string"/>
+<Field label="Label" name="Label" type="integer"/>
+<Field label="TLT" name="TLT" type="integer"/>
+<Field label="PL" name="PL" type="string"/>
+<Field label="POINT_X" name="POINT_X" type="string"/>
+<Field eofAsDelimiter="true" label="POINT_Y" name="POINT_Y" scale="3" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata8">
+<Record fieldDelimiter="," name="Public_Schools" previewAttachment="C:/Users/Prachi/Desktop/DBMS/Public_Schools.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿X" name="X" type="number"/>
+<Field label="Y" name="Y" type="number"/>
+<Field label="OBJECTID_1" name="OBJECTID_1" type="integer"/>
+<Field label="OBJECTID" name="OBJECTID" type="integer"/>
+<Field label="BLDG_ID" name="BLDG_ID" type="integer"/>
+<Field label="BLDG_NAME" name="BLDG_NAME" type="string"/>
+<Field label="ADDRESS" name="ADDRESS" type="string"/>
+<Field label="CITY" name="CITY" type="string"/>
+<Field label="ZIPCODE" name="ZIPCODE" type="string"/>
+<Field label="CSP_SCH_ID" name="CSP_SCH_ID" type="integer"/>
+<Field label="SCH_ID" name="SCH_ID" type="integer"/>
+<Field label="SCH_NAME" name="SCH_NAME" type="string"/>
+<Field label="SCH_LABEL" name="SCH_LABEL" type="string"/>
+<Field label="SCH_TYPE" name="SCH_TYPE" type="string"/>
+<Field label="SHARED" name="SHARED" type="string"/>
+<Field label="COMPLEX" name="COMPLEX" type="string"/>
+<Field label="Label" name="Label" type="integer"/>
+<Field label="TLT" name="TLT" type="integer"/>
+<Field eofAsDelimiter="true" label="PL" name="PL" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata9">
+<Record fieldDelimiter="," name="Public_Schools" previewAttachment="C:/Users/Prachi/Desktop/DBMS/Public_Schools.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿X" name="X" type="number"/>
+<Field label="Y" name="Y" type="number"/>
+<Field label="OBJECTID_1" name="OBJECTID_1" type="integer"/>
+<Field label="OBJECTID" name="OBJECTID" type="integer"/>
+<Field label="BLDG_ID" name="BLDG_ID" type="integer"/>
+<Field label="BLDG_NAME" name="BLDG_NAME" type="string"/>
+<Field label="ADDRESS" name="ADDRESS" type="string"/>
+<Field label="CITY" name="CITY" type="string"/>
+<Field label="ZIPCODE" name="ZIPCODE" type="integer"/>
+<Field label="CSP_SCH_ID" name="CSP_SCH_ID" type="integer"/>
+<Field label="SCH_ID" name="SCH_ID" type="integer"/>
+<Field label="SCH_NAME" name="SCH_NAME" type="string"/>
+<Field label="SCH_LABEL" name="SCH_LABEL" type="string"/>
+<Field label="SCH_TYPE" name="SCH_TYPE" type="string"/>
+<Field label="SHARED" name="SHARED" type="string"/>
+<Field eofAsDelimiter="true" label="COMPLEX" name="COMPLEX" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata7">
+<Record fieldDelimiter="," name="Public_Schools_1" previewAttachment="C:/Users/Prachi/Desktop/DBMS/Public_Schools.csv" previewAttachmentCharset="UTF-8" quoteChar="both" quotedStrings="false" recordDelimiter="\r\n" skipSourceRows="1" type="delimited">
+<Field label="﻿X" name="X" type="number"/>
+<Field label="Y" name="Y" type="number"/>
+<Field label="OBJECTID_1" name="OBJECTID_1" type="integer"/>
+<Field label="OBJECTID" name="OBJECTID" type="integer"/>
+<Field label="BLDG_ID" name="BLDG_ID" type="integer"/>
+<Field label="BLDG_NAME" name="BLDG_NAME" type="string"/>
+<Field label="ADDRESS" name="ADDRESS" type="string"/>
+<Field label="CITY" name="CITY" type="string"/>
+<Field label="ZIPCODE" name="ZIPCODE" type="string"/>
+<Field label="CSP_SCH_ID" name="CSP_SCH_ID" type="integer"/>
+<Field label="SCH_ID" name="SCH_ID" type="integer"/>
+<Field label="SCH_NAME" name="SCH_NAME" type="string"/>
+<Field label="SCH_LABEL" name="SCH_LABEL" type="string"/>
+<Field label="SCH_TYPE" name="SCH_TYPE" type="string"/>
+<Field label="SHARED" name="SHARED" type="string"/>
+<Field label="COMPLEX" name="COMPLEX" type="string"/>
+<Field label="Label" name="Label" type="integer"/>
+<Field label="TLT" name="TLT" type="integer"/>
+<Field label="PL" name="PL" type="string"/>
+<Field label="POINT_X" name="POINT_X" type="string"/>
+<Field eofAsDelimiter="true" label="POINT_Y" name="POINT_Y" scale="3" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata2">
+<Record fieldDelimiter="|" name="recordName1" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="Incident" type="integer"/>
+<Field name="Location" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata3">
+<Record fieldDelimiter="|" name="recordName1_1" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="Incident" type="integer"/>
+<Field name="Location" type="string"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata5">
+<Record fieldDelimiter="|" name="recordName2" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="Address" type="string"/>
+<Field name="NumberOfSchools" type="integer"/>
+</Record>
+</Metadata>
+<Metadata id="Metadata6">
+<Record fieldDelimiter="|" name="recordName3" previewAttachmentCharset="UTF-8" recordDelimiter="\r\n" type="delimited">
+<Field name="Street" type="string"/>
+<Field name="NumberOfIncidents" type="integer"/>
+<Field name="NumberOfSchools" type="integer"/>
+</Record>
+</Metadata>
+<Connection database="MYSQL" dbURL="jdbc:mysql://localhost:3306/SafeStay" id="JDBC0" jdbcSpecific="MYSQL" name="SafeStayConnection" password="Prachi26" type="JDBC" user="root"/>
+<GraphParameters>
+<GraphParameterFile fileURL="workspace.prm"/>
+</GraphParameters>
+<Dictionary/>
+</Global>
+<Phase number="0">
+<Node aggregateKey="Location" guiName="Aggregate" guiX="1187" guiY="240" id="AGGREGATE" mapping="$Incident:=count();$Location:=$Location;" type="AGGREGATE"/>
+<Node aggregateKey="ADDRESS" guiName="Aggregate" guiX="639" guiY="601" id="AGGREGATE1" mapping="$Address:=$ADDRESS;$NumberOfSchools:=count();" type="AGGREGATE"/>
+<Node dbConnection="JDBC0" guiName="DBInputTable" guiX="138" guiY="238" id="DBINPUT_TABLE" type="DB_INPUT_TABLE">
+<attr name="sqlQuery"><![CDATA[Select Address.Street,Address.location from Address]]></attr>
+</Node>
+<Node dbConnection="JDBC0" guiName="DBInputTable" guiX="138" guiY="66" id="DBINPUT_TABLE1" type="DB_INPUT_TABLE">
+<attr name="sqlQuery"><![CDATA[Select Incidents.IncidentId, Incidents.location from Incidents]]></attr>
+</Node>
+<Node guiName="ExtHashJoin" guiX="748" guiY="390" id="EXT_HASH_JOIN" joinKey="$Location=$Address" type="EXT_HASH_JOIN">
+<attr name="transform"><![CDATA[//#CTL2
+
+// Transforms input record into output record.
+function integer transform() {
+	$out.0.Street = $in.1.Address;
+	$out.0.NumberOfIncidents = $in.0.Incident;
+	$out.0.NumberOfSchools = $in.1.NumberOfSchools;
+
+	return ALL;
+}
+
+// Called during component initialization.
+// function boolean init() {}
+
+// Called during each graph run before the transform is executed. May be used to allocate and initialize resources
+// required by the transform. All resources allocated within this method should be released
+// by the postExecute() method.
+// function void preExecute() {}
+
+// Called only if transform() throws an exception.
+// function integer transformOnError(string errorMessage, string stackTrace) {}
+
+// Called during each graph run after the entire transform was executed. Should be used to free any resources
+// allocated within the preExecute() method.
+// function void postExecute() {}
+
+// Called to return a user-defined error message when an error occurs.
+// function string getMessage() {}
+]]></attr>
+</Node>
+<Node guiName="ExtHashJoin" guiX="664" guiY="96" id="EXT_HASH_JOIN1" joinKey="$location=$location" joinType="inner" type="EXT_HASH_JOIN">
+<attr name="transform"><![CDATA[//#CTL2
+
+// Transforms input record into output record.
+function integer transform() {
+	$out.0.Location = $in.1.Street;
+	$out.0.Incident = $in.0.IncidentId;
+
+	return ALL;
+}
+
+// Called during component initialization.
+// function boolean init() {}
+
+// Called during each graph run before the transform is executed. May be used to allocate and initialize resources
+// required by the transform. All resources allocated within this method should be released
+// by the postExecute() method.
+// function void preExecute() {}
+
+// Called only if transform() throws an exception.
+// function integer transformOnError(string errorMessage, string stackTrace) {}
+
+// Called during each graph run after the entire transform was executed. Should be used to free any resources
+// allocated within the preExecute() method.
+// function void postExecute() {}
+
+// Called to return a user-defined error message when an error occurs.
+// function string getMessage() {}
+]]></attr>
+</Node>
+<Node guiName="FastSort" guiX="955" guiY="240" id="FAST_SORT" sortKey="Location(a)" type="FAST_SORT"/>
+<Node guiName="FastSort" guiX="416" guiY="491" id="FAST_SORT1" sortKey="ADDRESS(a)" type="FAST_SORT"/>
+<Node existingSheetsActions="REMOVE_SHEETS" fileURL="5-6.xlsx" guiName="SpreadsheetDataWriter" guiX="1022" guiY="448" id="SPREADSHEET_DATA_WRITER" type="SPREADSHEET_WRITER" writeMode="OVERWRITE_SHEET_IN_MEMORY">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mapping>
+    <globalAttributes>
+        <orientation>VERTICAL</orientation>
+        <step>1</step>
+        <writeHeader>true</writeHeader>
+    </globalAttributes>
+    <defaultSkip>1</defaultSkip>
+    <headerGroups>
+        <headerGroup skip="1">
+            <cloverField>Street</cloverField>
+            <headerRanges>
+                <headerRange begin="A1"/>
+            </headerRanges>
+        </headerGroup>
+        <headerGroup skip="1">
+            <cloverField>NumberOfIncidents</cloverField>
+            <headerRanges>
+                <headerRange begin="B1"/>
+            </headerRanges>
+        </headerGroup>
+        <headerGroup skip="1">
+            <cloverField>NumberOfSchools</cloverField>
+            <headerRanges>
+                <headerRange begin="C1"/>
+            </headerRanges>
+        </headerGroup>
+    </headerGroups>
+</mapping>
+]]></attr>
+</Node>
+<Node fileURL="C:/Users/Prachi/Desktop/PM5-1.csv" guiName="UniversalDataReader" guiX="112" guiY="427" id="UNIVERSAL_DATA_READER1" skipFirstLine="true" type="DATA_READER"/>
+<Edge fromNode="AGGREGATE:0" guiBendpoints="" guiRouter="Manhattan" id="Edge24" inPort="Port 0 (driver)" metadata="Metadata3" outPort="Port 0 (out)" toNode="EXT_HASH_JOIN:0"/>
+<Edge fromNode="AGGREGATE1:0" guiBendpoints="" guiRouter="Manhattan" id="Edge5" inPort="Port 1 (slave)" metadata="Metadata5" outPort="Port 0 (out)" toNode="EXT_HASH_JOIN:1"/>
+<Edge fromNode="DBINPUT_TABLE:0" guiBendpoints="" guiRouter="Manhattan" id="Edge19" inPort="Port 1 (slave)" metadata="Metadata1" outPort="Port 0 (out)" toNode="EXT_HASH_JOIN1:1"/>
+<Edge fromNode="DBINPUT_TABLE1:0" guiBendpoints="" guiRouter="Manhattan" id="Edge23" inPort="Port 0 (driver)" metadata="Metadata0" outPort="Port 0 (out)" toNode="EXT_HASH_JOIN1:0"/>
+<Edge fromNode="EXT_HASH_JOIN:0" guiBendpoints="" guiRouter="Manhattan" id="Edge4" inPort="Port 0 (input)" metadata="Metadata6" outPort="Port 0 (out)" toNode="SPREADSHEET_DATA_WRITER:0"/>
+<Edge fromNode="EXT_HASH_JOIN1:0" guiBendpoints="" guiRouter="Manhattan" id="Edge20" inPort="Port 0 (in)" metadata="Metadata2" outPort="Port 0 (out)" toNode="FAST_SORT:0"/>
+<Edge fromNode="FAST_SORT:0" guiBendpoints="" guiRouter="Manhattan" id="Edge25" inPort="Port 0 (in)" metadata="Metadata3" outPort="Port 0 (out)" toNode="AGGREGATE:0"/>
+<Edge fromNode="FAST_SORT1:0" guiBendpoints="" guiRouter="Manhattan" id="Edge2" inPort="Port 0 (in)" outPort="Port 0 (out)" toNode="AGGREGATE1:0"/>
+<Edge fromNode="UNIVERSAL_DATA_READER1:0" guiBendpoints="" guiRouter="Manhattan" id="Edge0" inPort="Port 0 (in)" metadata="Metadata15" outPort="Port 0 (output)" toNode="FAST_SORT1:0"/>
+</Phase>
+</Graph>
