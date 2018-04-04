@@ -16,6 +16,8 @@ import SafeStay.model.Incidents.UCRs;
 
 public class IncidentsDao {
 	protected ConnectionManager connectionManager;
+	private static final Character INFILE_FIELD_SEPARATION_CHAR = ',';
+	private static final Character INFILE_ENCLOSED_CHAR = '"';
 
 	private static IncidentsDao instance = null;
 
@@ -240,5 +242,21 @@ public class IncidentsDao {
 		}
 		return incidentsList;
 	}
+	public void importData(String dataFilePath, String tableName) {
+		String sql = "LOAD DATA LOCAL INFILE '" + dataFilePath + "' into table " + tableName + " FIELDS TERMINATED BY '"
+				+ INFILE_FIELD_SEPARATION_CHAR + "' " + "ENCLOSED BY '" + INFILE_ENCLOSED_CHAR + "' "
+				+ "LINES TERMINATED BY '" + System.lineSeparator() + "' " + "IGNORE 1 LINES;";
 
+		Connection conn = null;
+		Statement statement = null;
+		try {
+			conn = connectionManager.getConnection();
+			conn.setAutoCommit(true);
+			statement = conn.createStatement();
+			statement.executeUpdate(sql);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

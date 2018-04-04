@@ -42,8 +42,7 @@ import SafeStay.model.Users;
  *
  */
 public class Inserter {
-	private static final Character INFILE_FIELD_SEPARATION_CHAR = ',';
-	private static final Character INFILE_ENCLOSED_CHAR = '"';
+
 	protected ConnectionManager connectionManager;
 
 	protected Inserter() {
@@ -54,10 +53,6 @@ public class Inserter {
 
 		try {
 			Inserter inserter = new Inserter();
-			inserter.importData("/Users/grishmathakkar/Desktop/Offense.csv", "Offense");
-			inserter.importData("/Users/grishmathakkar/Desktop/NewIncidents.csv", "Incidents");
-			inserter.importData("/Users/grishmathakkar/Desktop/Address.csv", "Address");
-			System.out.println("Inserted data successfully");
 
 			// Test Users
 			UsersDao usersDao = UsersDao.getInstance();
@@ -101,6 +96,7 @@ public class Inserter {
 
 			// Test Offense
 			OffenseDao offenseDao = OffenseDao.getInstance();
+			offenseDao.importData("/Users/grishmathakkar/Desktop/Offense.csv", "Offense");
 			Offense offense = new Offense(120, "DRUNK DRIVING");
 			offense = offenseDao.create(offense);
 			offense = offenseDao.getOffenseByOffenseCode(offense.getOffenceCode());
@@ -112,6 +108,7 @@ public class Inserter {
 
 			// Test Address
 			AddressDao addressDao = AddressDao.getInstance();
+			addressDao.importData("/Users/grishmathakkar/Desktop/Address.csv", "Address");
 			Address address = new Address("(42.312007476, -71.06650934)", "Cliff Street", "42.312007476",
 					"-71.06650934");
 			address = addressDao.create(address);
@@ -126,6 +123,7 @@ public class Inserter {
 			String str2 = "2018-03-17";
 			Date date2 = Date.valueOf(str2);
 			IncidentsDao incidentsDao = IncidentsDao.getInstance();
+			incidentsDao.importData("/Users/grishmathakkar/Desktop/NewIncidents.csv", "Incidents");
 			Incidents incidents = new Incidents(offense, "Heath Street", 332, Shootings.N, date2, "Saturday", 2300,
 					UCRs.PartThree, address);
 			incidents = incidentsDao.create(incidents);
@@ -224,7 +222,7 @@ public class Inserter {
 			// Test top 20 safest Locations to live:
 			System.out.println("Top 20 safe locations are:");
 			SafestAreasTop20 saf= SafestAreasTop20.getInstance();
-			int kk=0;
+			int kk=1;
 			for(String m: saf.getTop20SafestAreas()) {
 				System.out.println(kk+": "+m);
 				++kk;
@@ -235,22 +233,6 @@ public class Inserter {
 
 	}
 
-	public void importData(String dataFilePath, String tableName) {
-		String sql = "LOAD DATA LOCAL INFILE '" + dataFilePath + "' into table " + tableName + " FIELDS TERMINATED BY '"
-				+ INFILE_FIELD_SEPARATION_CHAR + "' " + "ENCLOSED BY '" + INFILE_ENCLOSED_CHAR + "' "
-				+ "LINES TERMINATED BY '" + System.lineSeparator() + "' " + "IGNORE 1 LINES;";
 
-		Connection conn = null;
-		Statement statement = null;
-		try {
-			conn = connectionManager.getConnection();
-			conn.setAutoCommit(true);
-			statement = conn.createStatement();
-			statement.executeUpdate(sql);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 }

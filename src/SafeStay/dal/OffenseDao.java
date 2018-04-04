@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import SafeStay.model.Offense;
 
 public class OffenseDao {
 	protected ConnectionManager connectionManager;
+	private static final Character INFILE_FIELD_SEPARATION_CHAR = ',';
+	private static final Character INFILE_ENCLOSED_CHAR = '"';
 
 	private static OffenseDao instance = null;
 
@@ -102,5 +105,21 @@ public class OffenseDao {
 		}
 		return null;
 	}
+	public void importData(String dataFilePath, String tableName) {
+		String sql = "LOAD DATA LOCAL INFILE '" + dataFilePath + "' into table " + tableName + " FIELDS TERMINATED BY '"
+				+ INFILE_FIELD_SEPARATION_CHAR + "' " + "ENCLOSED BY '" + INFILE_ENCLOSED_CHAR + "' "
+				+ "LINES TERMINATED BY '" + System.lineSeparator() + "' " + "IGNORE 1 LINES;";
 
+		Connection conn = null;
+		Statement statement = null;
+		try {
+			conn = connectionManager.getConnection();
+			conn.setAutoCommit(true);
+			statement = conn.createStatement();
+			statement.executeUpdate(sql);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
