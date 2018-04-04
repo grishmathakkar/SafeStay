@@ -21,6 +21,7 @@ import SafeStay.dal.RecommendationsDao;
 import SafeStay.dal.RequestsDao;
 import SafeStay.dal.ReviewsDao;
 import SafeStay.dal.SafestAreasTop20;
+import SafeStay.dal.UnsafeStreets;
 import SafeStay.dal.UserAddressLogsDao;
 import SafeStay.dal.UsersDao;
 import SafeStay.model.Address;
@@ -123,7 +124,7 @@ public class Inserter {
 			String str2 = "2018-03-17";
 			Date date2 = Date.valueOf(str2);
 			IncidentsDao incidentsDao = IncidentsDao.getInstance();
-			incidentsDao.importData("/Users/grishmathakkar/Desktop/NewIncidents.csv", "Incidents");
+			incidentsDao.importData();
 			Incidents incidents = new Incidents(offense, "Heath Street", 332, Shootings.N, date2, "Saturday", 2300,
 					UCRs.PartThree, address);
 			incidents = incidentsDao.create(incidents);
@@ -227,6 +228,15 @@ public class Inserter {
 				System.out.println(kk+": "+m);
 				++kk;
 			}
+			
+			// Test top 20 unsafe Streets to live:
+						System.out.println("Top 20 unsafe streets are:");
+						UnsafeStreets unsa= UnsafeStreets.getInstance();
+						int kkm=1;
+						for(String m: unsa.getUnsafeStreets()) {
+							System.out.println(kkm+": "+m);
+							++kkm;
+						}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

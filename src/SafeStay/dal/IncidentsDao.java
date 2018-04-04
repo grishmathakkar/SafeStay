@@ -242,11 +242,10 @@ public class IncidentsDao {
 		}
 		return incidentsList;
 	}
-	public void importData(String dataFilePath, String tableName) {
-		String sql = "LOAD DATA LOCAL INFILE '" + dataFilePath + "' into table " + tableName + " FIELDS TERMINATED BY '"
+	public void importData() {
+		String sql = "LOAD DATA LOCAL INFILE '" + "/Users/grishmathakkar/Desktop/NewIncidents.csv" + "' into table " + "Incidents" + " FIELDS TERMINATED BY '"
 				+ INFILE_FIELD_SEPARATION_CHAR + "' " + "ENCLOSED BY '" + INFILE_ENCLOSED_CHAR + "' "
 				+ "LINES TERMINATED BY '" + System.lineSeparator() + "' " + "IGNORE 1 LINES;";
-
 		Connection conn = null;
 		Statement statement = null;
 		try {
