@@ -59,7 +59,7 @@ public class ReviewUpdate extends HttpServlet {
 		// Retrieve user and validate.
 		String reviewId = req.getParameter("reviewid");
 		try {
-			
+
 			Reviews review = reviewsDao.getReviewById(Integer.parseInt(reviewId));
 			if (review == null) {
 				messages.put("success", "Review does not exist. No update to perform.");

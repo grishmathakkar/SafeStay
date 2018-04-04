@@ -18,39 +18,38 @@ import SafeStay.model.*;
 
 @WebServlet("/userrecommendations")
 public class UserRecommendations extends HttpServlet {
-protected RecommendationsDao recommendationsDao;
-	
+	protected RecommendationsDao recommendationsDao;
+
 	@Override
 	public void init() throws ServletException {
 		recommendationsDao = RecommendationsDao.getInstance();
 	}
-	
+
 	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// Map for storing messages.
-        Map<String, String> messages = new HashMap<String, String>();
-        req.setAttribute("messages", messages);
-		
+		Map<String, String> messages = new HashMap<String, String>();
+		req.setAttribute("messages", messages);
+
 		// Retrieve and validate UserName.
-        String userName = req.getParameter("username");
-        if (userName == null || userName.trim().isEmpty()) {
-            messages.put("title", "Invalid username.");
-        } else {
-        	messages.put("title", "Recommendations for " + userName);
-        }
-        
-        // Retrieve BlogUsers, and store in the request.
-        List<Recommendations> recommendations = new ArrayList<Recommendations>();
-        try {
-        	EndUsers endUser = new EndUsers(userName);
-        	recommendations = recommendationsDao.getRecommendationsByUserName(userName);
-        } catch (SQLException e) {
+		String userName = req.getParameter("username");
+		if (userName == null || userName.trim().isEmpty()) {
+			messages.put("title", "Invalid username.");
+		} else {
+			messages.put("title", "Recommendations for " + userName);
+		}
+
+		// Retrieve BlogUsers, and store in the request.
+		List<Recommendations> recommendations = new ArrayList<Recommendations>();
+		try {
+			// EndUsers endUser = new EndUsers(userName);
+			recommendations = recommendationsDao.getRecommendationsByUserName(userName);
+		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new IOException(e);
-        }
-        req.setAttribute("recommendations", recommendations);
-        req.getRequestDispatcher("/UserRecommendations.jsp").forward(req, resp);
+		}
+		req.setAttribute("recommendations", recommendations);
+		req.getRequestDispatcher("/UserRecommendations.jsp").forward(req, resp);
 	}
 
 }
