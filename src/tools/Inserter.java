@@ -52,7 +52,7 @@ public class Inserter {
 	public static void main(String[] args) throws SQLException, ParseException {
 
 		try {
-			Inserter inserter = new Inserter();
+
 
 			// Test Users
 			UsersDao usersDao = UsersDao.getInstance();

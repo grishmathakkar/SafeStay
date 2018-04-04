@@ -33,7 +33,7 @@ public class IncidentsDao {
 	}
 
 	public Incidents create(Incidents incident) throws SQLException {
-		String insertIncident = "INSERT INTO Incidents(OffenseCode,District,ReportingArea,Shooting,OccuredOnDate,"
+		String insertIncident = "INSERT INTO Incidents (OffenseCode,District,ReportingArea,Shooting,OccuredOnDate,"
 				+ "DayOfWeek,Hours,UCR,Location) " + "VALUES(?,?,?,?,?,?,?,?,?);";
 		Connection connection = null;
 		PreparedStatement insertStmt = null;
