@@ -16,9 +16,11 @@ import SafeStay.dal.EndUsersDao;
 import SafeStay.dal.IncidentsDao;
 import SafeStay.dal.MaintainsDao;
 import SafeStay.dal.OffenseDao;
+import SafeStay.dal.RatioReviewRecommendation;
 import SafeStay.dal.RecommendationsDao;
 import SafeStay.dal.RequestsDao;
 import SafeStay.dal.ReviewsDao;
+import SafeStay.dal.SafestAreasTop20;
 import SafeStay.dal.UserAddressLogsDao;
 import SafeStay.dal.UsersDao;
 import SafeStay.model.Address;
@@ -52,9 +54,9 @@ public class Inserter {
 
 		try {
 			Inserter inserter = new Inserter();
-			inserter.importData("C:/Users/Prachi/Desktop/DBMS/Offense.csv", "Offense");
-			inserter.importData("C:/Users/Prachi/Desktop/DBMS/NewIncidents.csv", "Incidents");
-			inserter.importData("C:/Users/Prachi/Desktop/DBMS/Address.csv", "Address");
+			inserter.importData("/Users/grishmathakkar/Desktop/Offense.csv", "Offense");
+			inserter.importData("/Users/grishmathakkar/Desktop/NewIncidents.csv", "Incidents");
+			inserter.importData("/Users/grishmathakkar/Desktop/Address.csv", "Address");
 			System.out.println("Inserted data successfully");
 
 			// Test Users
@@ -208,7 +210,25 @@ public class Inserter {
 			userAddressLogsList = userAddressLogsDao.getUALogsByUserName(userAddressLogs.getEndUser().getUserName());
 			System.out.println(userAddressLogsList.size());
 			userAddressLogs = userAddressLogsDao.delete(userAddressLogs);
-
+			
+			// Test RatioReviewRecommendations
+			Reviews reviews2 = new Reviews("Safe area", endUsers, address);
+			reviews2 = reviewsDao.create(reviews2);
+			Recommendations recommendations2 = new Recommendations(3.0, 3.0, 3.0, endUsers, address);
+			recommendations2 = recommendationsDao.create(recommendations2);
+			RatioReviewRecommendation k= RatioReviewRecommendation.getInstance();
+			System.out.println("The ratio of of total number of recommendations to reviews for Boston are: "
+			+k.getRatioOfRecommendationAndReview());
+	
+			
+			// Test top 20 safest Locations to live:
+			System.out.println("Top 20 safe locations are:");
+			SafestAreasTop20 saf= SafestAreasTop20.getInstance();
+			int kk=0;
+			for(String m: saf.getTop20SafestAreas()) {
+				System.out.println(kk+": "+m);
+				++kk;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
