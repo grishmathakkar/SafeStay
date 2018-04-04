@@ -53,7 +53,6 @@ public class ReviewsDao {
 	}
 
 	public Reviews create(Reviews review) throws SQLException {
-		// Grishma Thakkar
 		String createReview = "INSERT INTO Review(Content, UserName, Location) " + "VALUES(?,?,?);";
 		Connection connection = null;
 		PreparedStatement insertStmt = null;
@@ -105,7 +104,7 @@ public class ReviewsDao {
 			EndUsersDao endusersDao = EndUsersDao.getInstance();
 			AddressDao addressDao = AddressDao.getInstance();
 
-			if (results.next()) {
+			while (results.next()) {
 				int rReviewId = results.getInt("ReviewId");
 				String rContent = results.getString("Content");
 				String rUserName = results.getString("UserName");
@@ -146,7 +145,7 @@ public class ReviewsDao {
 			EndUsersDao endusersDao = EndUsersDao.getInstance();
 			AddressDao addressDao = AddressDao.getInstance();
 
-			if (results.next()) {
+			while (results.next()) {
 				int rReviewId = results.getInt("ReviewId");
 				String rContent = results.getString("Content");
 				String rUserName = results.getString("UserName");
@@ -189,7 +188,7 @@ public class ReviewsDao {
 			EndUsersDao endusersDao = EndUsersDao.getInstance();
 			AddressDao addressDao = AddressDao.getInstance();
 
-			if (results.next()) {
+			while (results.next()) {
 				int rReviewId = results.getInt("ReviewId");
 				String rContent = results.getString("Content");
 				String rUserName = results.getString("UserName");

@@ -78,7 +78,7 @@ public class RecommendationsDao {
 			EndUsersDao endusersDao = EndUsersDao.getInstance();
 			AddressDao addressDao = AddressDao.getInstance();
 
-			if (results.next()) {
+			while (results.next()) {
 				int rRecommendationId = results.getInt("RecommendationId");
 				String rUserName = results.getString("UserName");
 				String rlocation = results.getString("Location");
@@ -123,7 +123,7 @@ public class RecommendationsDao {
 			EndUsersDao endusersDao = EndUsersDao.getInstance();
 			AddressDao addressDao = AddressDao.getInstance();
 
-			if (results.next()) {
+			while (results.next()) {
 				int rRecommendationId = results.getInt("RecommendationId");
 				String rUserName = results.getString("UserName");
 				String rlocation = results.getString("Location");
@@ -169,7 +169,7 @@ public class RecommendationsDao {
 			EndUsersDao endusersDao = EndUsersDao.getInstance();
 			AddressDao addressDao = AddressDao.getInstance();
 
-			if (results.next()) {
+			while (results.next()) {
 				int rRecommendationId = results.getInt("RecommendationId");
 				String rUserName = results.getString("UserName");
 				String rlocation = results.getString("Location");
@@ -187,6 +187,7 @@ public class RecommendationsDao {
 			e.printStackTrace();
 			throw e;
 		} finally {
+			// very good
 			if (connection != null) {
 				connection.close();
 			}
@@ -238,7 +239,6 @@ public class RecommendationsDao {
 			deleteStmt = connection.prepareStatement(delRecom);
 			deleteStmt.setInt(1, recommendationid);
 			deleteStmt.executeUpdate();
-			// Return null so the caller can no longer operate on the Persons instance.
 			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();

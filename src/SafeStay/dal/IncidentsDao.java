@@ -108,7 +108,7 @@ public class IncidentsDao {
 			results = selectStmt.executeQuery();
 			OffenseDao offensesDao = OffenseDao.getInstance();
 			AddressDao addressDao = AddressDao.getInstance();
-			if (results.next()) {
+			while (results.next()) {
 				int resultincidentId = results.getInt("IncidentId");
 				int resultOffensecode = results.getInt("OffenseCode");
 				String resultDistrict = results.getString("District");

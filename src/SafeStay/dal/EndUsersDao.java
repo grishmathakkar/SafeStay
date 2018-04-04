@@ -64,7 +64,7 @@ public class EndUsersDao extends UsersDao {
 			selectStmt = connection.prepareStatement(selectUser);
 			selectStmt.setString(1, userName);
 			results = selectStmt.executeQuery();
-			if (results.next()) {
+			while (results.next()) {
 				String resultUserName = results.getString("UserName");
 				String resultPassword = results.getString("UserPassword");
 				String resultFirstName = results.getString("FirstName");

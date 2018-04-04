@@ -12,6 +12,7 @@ public class AddressDao {
 	// Single pattern: instantiation is limited to one object.
 
 	private static AddressDao instance = null;
+
 	protected AddressDao() {
 		connectionManager = new ConnectionManager();
 	}
@@ -42,8 +43,7 @@ public class AddressDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
-		}
-		finally {
+		} finally {
 			if (connection != null) {
 				connection.close();
 			}
@@ -70,7 +70,7 @@ public class AddressDao {
 			// You can iterate the result set (although the example below only retrieves
 			// the first record). The cursor is initially positioned before the row.
 			// Furthermore, you can retrieve fields by name and by type.
-			if (results.next()) {
+			while (results.next()) {
 				String rlocation = results.getString("Location");
 				String rstreet = results.getString("Street");
 				String rlatitude = results.getString("Latitude");
@@ -94,6 +94,7 @@ public class AddressDao {
 		}
 		return null;
 	}
+
 	public Address delete(Address address) throws SQLException {
 		String delAddress = "DELETE FROM Address WHERE location=?;";
 		Connection connection = null;

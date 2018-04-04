@@ -105,7 +105,7 @@ public class UserAddressLogsDao {
 			results = selectStmt.executeQuery();
 			EndUsersDao endUsersDao = EndUsersDao.getInstance();
 			AddressDao addressDao = AddressDao.getInstance();
-			if (results.next()) {
+			while (results.next()) {
 				int resultuserAddressId = results.getInt("User_address_id");
 				String resultUserName = results.getString("UserName");
 				String resultLocation = results.getString("Location");

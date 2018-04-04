@@ -62,15 +62,8 @@ public class UsersDao {
 			connection = connectionManager.getConnection();
 			selectStmt = connection.prepareStatement(selectUser);
 			selectStmt.setString(1, userName);
-			// Note that we call executeQuery(). This is used for a SELECT statement
-			// because it returns a result set. For more information, see:
-			// http://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html
-			// http://docs.oracle.com/javase/7/docs/api/java/sql/ResultSet.html
 			results = selectStmt.executeQuery();
-			// You can iterate the result set (although the example below only retrieves
-			// the first record). The cursor is initially positioned before the row.
-			// Furthermore, you can retrieve fields by name and by type.
-			if (results.next()) {
+			while (results.next()) {
 				String resultUserName = results.getString("UserName");
 				String password = results.getString("UserPassword");
 				String firstName = results.getString("FirstName");

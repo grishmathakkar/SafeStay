@@ -12,8 +12,6 @@ import SafeStay.model.Comments;
 import SafeStay.model.Incidents;
 import SafeStay.model.Users;
 
-
-
 public class CommentsDao {
 
 	protected ConnectionManager connectionManager;
@@ -69,7 +67,7 @@ public class CommentsDao {
 			}
 		}
 	}
-	
+
 	public Comments getCommentbyId(int commentId) throws SQLException {
 		String selectComment = "SELECT CommentId,UserName,IncidentId,Description " + "FROM Comments "
 				+ "WHERE CommentId=?;";
@@ -110,8 +108,7 @@ public class CommentsDao {
 		}
 		return null;
 	}
-	
-	
+
 	public List<Comments> getCommentsByUserName(String userName) throws SQLException {
 		List<Comments> commentsList = new ArrayList<>();
 		String selectComment = "SELECT CommentId,UserName,IncidentId,Description  " + "FROM Comments "
@@ -155,7 +152,7 @@ public class CommentsDao {
 		return commentsList;
 
 	}
-	
+
 	public List<Comments> getCommentsByIncidentId(int incidentId) throws SQLException {
 		List<Comments> commentsList = new ArrayList<>();
 		String selectComment = "SELECT CommentId,UserName,IncidentId,Description  " + "FROM Comments "
@@ -199,7 +196,7 @@ public class CommentsDao {
 		return commentsList;
 
 	}
-	
+
 	public Comments delete(Comments comment) throws SQLException {
 		String deleteComment = "DELETE FROM Comments WHERE CommentId=?;";
 		Connection connection = null;
@@ -214,14 +211,13 @@ public class CommentsDao {
 			e.printStackTrace();
 			throw e;
 		} finally {
-			if(connection != null) {
+			if (connection != null) {
 				connection.close();
 			}
-			if(deleteStmt != null) {
+			if (deleteStmt != null) {
 				deleteStmt.close();
 			}
 		}
 	}
-	
 
 }
