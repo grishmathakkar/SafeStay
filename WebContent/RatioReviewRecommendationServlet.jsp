@@ -11,7 +11,7 @@
 <title>Ratio of total number of recommendations to reviews for Boston</title>
 </head>
 <body>
-	<h1>Ratio:</h1>
+	<h1>Ratio of total number of recommendations to reviews for Boston:</h1>
 <c:out value="${rat}"> Here</c:out>
 </body>
 </html>
