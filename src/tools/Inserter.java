@@ -236,15 +236,15 @@ public class Inserter {
 				System.out.println(kkm + ": " + m);
 				++kkm;
 			}
-			
+
 			// Test safety index of all the streets
-						System.out.println("Safety index of streets are:");
-						SafetyIndex si=SafetyIndex.getInstance();
-						int kkmm = 1;
-						for (String m : si.getSafetyIndex()) {
-							System.out.println(kkmm + ": " + m);
-							++kkm;
-						}
+			System.out.println("Safety index of streets are:");
+			SafetyIndex si = SafetyIndex.getInstance();
+			int kkmm = 1;
+			for (String m : si.getSafetyIndex()) {
+				System.out.println(kkmm + ": " + m);
+				++kkm;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
