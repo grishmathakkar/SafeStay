@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class AddressDao {
-	protected ConnectionManager connectionManager;
 	private static final Character INFILE_FIELD_SEPARATION_CHAR = ',';
 	private static final Character INFILE_ENCLOSED_CHAR = '"';
+	protected ConnectionManager connectionManager;
 
 	// Single pattern: instantiation is limited to one object.
 
@@ -124,6 +124,7 @@ public class AddressDao {
 			}
 		}
 	}
+	
 	public void importData(String dataFilePath, String tableName) {
 		String sql = "LOAD DATA LOCAL INFILE '" + dataFilePath + "' into table " + tableName + " FIELDS TERMINATED BY '"
 				+ INFILE_FIELD_SEPARATION_CHAR + "' " + "ENCLOSED BY '" + INFILE_ENCLOSED_CHAR + "' "

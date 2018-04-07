@@ -15,9 +15,9 @@ import SafeStay.model.Incidents.Shootings;
 import SafeStay.model.Incidents.UCRs;
 
 public class IncidentsDao {
-	protected ConnectionManager connectionManager;
 	private static final Character INFILE_FIELD_SEPARATION_CHAR = ',';
 	private static final Character INFILE_ENCLOSED_CHAR = '"';
+	protected ConnectionManager connectionManager;
 
 	private static IncidentsDao instance = null;
 
@@ -33,7 +33,7 @@ public class IncidentsDao {
 	}
 
 	public Incidents create(Incidents incident) throws SQLException {
-		String insertIncident = "INSERT INTO Incidents (OffenseCode,District,ReportingArea,Shooting,OccuredOnDate,"
+		String insertIncident = "INSERT INTO Incidents(OffenseCode,District,ReportingArea,Shooting,OccuredOnDate,"
 				+ "DayOfWeek,Hours,UCR,Location) " + "VALUES(?,?,?,?,?,?,?,?,?);";
 		Connection connection = null;
 		PreparedStatement insertStmt = null;
@@ -243,11 +243,12 @@ public class IncidentsDao {
 		return incidentsList;
 	}
 
-	public void importData() {
-		String sql = "LOAD DATA LOCAL INFILE '" + "/Users/grishmathakkar/Desktop/NewIncidents.csv" + "' INTO TABLE "
-				+ "Incidents" + " FIELDS TERMINATED BY '" + INFILE_FIELD_SEPARATION_CHAR + "' " + "ENCLOSED BY '"
-				+ INFILE_ENCLOSED_CHAR + "' " + "LINES TERMINATED BY '" + System.lineSeparator() + "' "
+	public void importData(String dataFilePath, String tableName) {
+		String sql = "LOAD DATA LOCAL INFILE '" + dataFilePath + "' into table " + tableName + " FIELDS TERMINATED BY '"
+				+ INFILE_FIELD_SEPARATION_CHAR + "' " + "ENCLOSED BY '" + INFILE_ENCLOSED_CHAR + "' "
+				+ "LINES TERMINATED BY '" + System.lineSeparator() + "' "
 				+ "IGNORE 1 LINES (OffenseCode,District,ReportingArea,Shooting,OccuredOnDate,DayOfWeek,Hours,UCR,Location);";
+
 		Connection conn = null;
 		Statement statement = null;
 		try {
@@ -260,4 +261,5 @@ public class IncidentsDao {
 			e.printStackTrace();
 		}
 	}
+
 }

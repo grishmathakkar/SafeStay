@@ -13,6 +13,7 @@ public class SafetyIndex {
 	// Single pattern: instantiation is limited to one object.
 
 	private static SafetyIndex instance = null;
+
 	protected SafetyIndex() {
 		connectionManager = new ConnectionManager();
 	}
@@ -24,13 +25,12 @@ public class SafetyIndex {
 		return instance;
 
 	}
-	public List <String> getSafetyIndex() throws SQLException {
+
+	public List<String> getSafetyIndex() throws SQLException {
 		List<String> safAreas = new ArrayList<String>();
-		String safetyIndex = "select i.Location,a.Street,\n" + 
-				"(count(*)/(select count(*) from incidents)) as safetyIndex\n" + 
-				"from incidents i inner join address a\n" + 
-				"on i.Location = a.Location\n" + 
-				"group by i.Location;";
+		String safetyIndex = "select i.Location,a.Street,\n"
+				+ "(count(*)/(select count(*) from incidents)) as safetyIndex\n"
+				+ "from incidents i inner join address a\n" + "on i.Location = a.Location\n" + "group by i.Location;";
 		Connection connection = null;
 		PreparedStatement selectStmt = null;
 		ResultSet results = null;
@@ -45,11 +45,10 @@ public class SafetyIndex {
 			// You can iterate the result set (although the example below only retrieves
 			// the first record). The cursor is initially positioned before the row.
 			// Furthermore, you can retrieve fields by name and by type.
-			if (results.next()) {
-				String k=results.getString("street");
-				String m=results.getString("safetyIndex");
-				safAreas.add(k+" 	"+m);
-				
+			while (results.next()) {
+				String k = results.getString("street");
+				String m = results.getString("safetyIndex");
+				safAreas.add(k + " 	" + m);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

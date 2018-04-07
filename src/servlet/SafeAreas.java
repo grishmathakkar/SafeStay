@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
-import SafeStay.dal.RatioReviewRecommendation;
 import SafeStay.dal.SafestAreasTop20;
 
 /**
@@ -21,37 +17,40 @@ import SafeStay.dal.SafestAreasTop20;
 @WebServlet("/SafeAreas")
 public class SafeAreas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected SafestAreasTop20 rrr; 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SafeAreas() {
-       
-        rrr= SafestAreasTop20.getInstance();
-    }
-    
+	protected SafestAreasTop20 rrr;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SafeAreas() {
+
+		rrr = SafestAreasTop20.getInstance();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
 
-	        request.setAttribute("rat", rrr.getTop20SafestAreas());
-	    } catch (SQLException e) {
-	        request.setAttribute("error", "Retrieving rows failed.");
-	        e.printStackTrace();
-	    }
-	
-	request.getRequestDispatcher("/SafeAreas.jsp").forward(request, response);
-}
+			request.setAttribute("rat", rrr.getTop20SafestAreas());
+		} catch (SQLException e) {
+			request.setAttribute("error", "Retrieving rows failed.");
+			e.printStackTrace();
+		}
 
+		request.getRequestDispatcher("/SafeAreas.jsp").forward(request, response);
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -10,9 +10,8 @@ import java.util.List;
 public class UnsafeStreets {
 	protected ConnectionManager connectionManager;
 
-	// Single pattern: instantiation is limited to one object.
-
 	private static UnsafeStreets instance = null;
+
 	protected UnsafeStreets() {
 		connectionManager = new ConnectionManager();
 	}
@@ -24,15 +23,12 @@ public class UnsafeStreets {
 		return instance;
 
 	}
+
 	public List<String> getUnsafeStreets() throws SQLException {
 		List<String> unsafAreas = new ArrayList<String>();
-		String unsafeStreets = "select street,count(*) as incidentcnt from\n" + 
-				"incidents i inner join address a\n" + 
-				"on i.Location = a.Location\n" + 
-				"where a.Street is not null\n" + 
-				"group by a.street\n" + 
-				"order by incidentcnt desc\n" + 
-				"limit 20;";
+		String unsafeStreets = "select street,count(*) as incidentcnt from\n" + "incidents i inner join address a\n"
+				+ "on i.Location = a.Location\n" + "where a.Street is not null\n" + "group by a.street\n"
+				+ "order by incidentcnt desc\n" + "limit 20;";
 		Connection connection = null;
 		PreparedStatement selectStmt = null;
 		ResultSet results = null;
@@ -47,10 +43,10 @@ public class UnsafeStreets {
 			// You can iterate the result set (although the example below only retrieves
 			// the first record). The cursor is initially positioned before the row.
 			// Furthermore, you can retrieve fields by name and by type.
-			if (results.next()) {
-				String km =results.getString("street");
+			while (results.next()) {
+				String km = results.getString("street");
 				unsafAreas.add(km);
-				
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

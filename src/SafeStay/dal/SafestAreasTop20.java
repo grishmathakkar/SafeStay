@@ -13,6 +13,7 @@ public class SafestAreasTop20 {
 	// Single pattern: instantiation is limited to one object.
 
 	private static SafestAreasTop20 instance = null;
+
 	protected SafestAreasTop20() {
 		connectionManager = new ConnectionManager();
 	}
@@ -24,14 +25,11 @@ public class SafestAreasTop20 {
 		return instance;
 
 	}
-	public List <String> getTop20SafestAreas() throws SQLException {
+
+	public List<String> getTop20SafestAreas() throws SQLException {
 		List<String> safAreas = new ArrayList<String>();
-		String top20SafestAreas = "SELECT i.location ,count(*)\n" + 
-				"FROM incidents I LEFT JOIN address a\n" + 
-				"ON i.Location = a.Location\n" + 
-				"GROUP BY i.Location\n" + 
-				"ORDER BY count(*)\n" + 
-				"LIMIT 20;";
+		String top20SafestAreas = "SELECT i.location ,count(*)\n" + "FROM incidents I LEFT JOIN address a\n"
+				+ "ON i.Location = a.Location\n" + "GROUP BY i.Location\n" + "ORDER BY count(*)\n" + "LIMIT 20;";
 		Connection connection = null;
 		PreparedStatement selectStmt = null;
 		ResultSet results = null;
@@ -46,10 +44,10 @@ public class SafestAreasTop20 {
 			// You can iterate the result set (although the example below only retrieves
 			// the first record). The cursor is initially positioned before the row.
 			// Furthermore, you can retrieve fields by name and by type.
-			if (results.next()) {
-				String k=results.getString("location");
+			while (results.next()) {
+				String k = results.getString("location");
 				safAreas.add(k);
-				
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

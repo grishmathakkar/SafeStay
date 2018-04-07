@@ -9,9 +9,11 @@ import java.sql.Statement;
 import SafeStay.model.Offense;
 
 public class OffenseDao {
-	protected ConnectionManager connectionManager;
+
 	private static final Character INFILE_FIELD_SEPARATION_CHAR = ',';
 	private static final Character INFILE_ENCLOSED_CHAR = '"';
+
+	protected ConnectionManager connectionManager;
 
 	private static OffenseDao instance = null;
 
@@ -105,6 +107,7 @@ public class OffenseDao {
 		}
 		return null;
 	}
+
 	public void importData(String dataFilePath, String tableName) {
 		String sql = "LOAD DATA LOCAL INFILE '" + dataFilePath + "' into table " + tableName + " FIELDS TERMINATED BY '"
 				+ INFILE_FIELD_SEPARATION_CHAR + "' " + "ENCLOSED BY '" + INFILE_ENCLOSED_CHAR + "' "
@@ -122,4 +125,5 @@ public class OffenseDao {
 			e.printStackTrace();
 		}
 	}
+
 }
