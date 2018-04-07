@@ -242,10 +242,12 @@ public class IncidentsDao {
 		}
 		return incidentsList;
 	}
+
 	public void importData() {
-		String sql = "LOAD DATA LOCAL INFILE '" + "/Users/grishmathakkar/Desktop/NewIncidents.csv" + "' into table " + "Incidents" + " FIELDS TERMINATED BY '"
-				+ INFILE_FIELD_SEPARATION_CHAR + "' " + "ENCLOSED BY '" + INFILE_ENCLOSED_CHAR + "' "
-				+ "LINES TERMINATED BY '" + System.lineSeparator() + "' " + "IGNORE 1 LINES;";
+		String sql = "LOAD DATA LOCAL INFILE '" + "/Users/grishmathakkar/Desktop/NewIncidents.csv" + "' INTO TABLE "
+				+ "Incidents" + " FIELDS TERMINATED BY '" + INFILE_FIELD_SEPARATION_CHAR + "' " + "ENCLOSED BY '"
+				+ INFILE_ENCLOSED_CHAR + "' " + "LINES TERMINATED BY '" + System.lineSeparator() + "' "
+				+ "IGNORE 1 LINES (OffenseCode,District,ReportingArea,Shooting,OccuredOnDate,DayOfWeek,Hours,UCR,Location);";
 		Connection conn = null;
 		Statement statement = null;
 		try {
