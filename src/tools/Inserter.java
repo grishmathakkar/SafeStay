@@ -1,9 +1,7 @@
 package tools;
 
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -15,8 +13,12 @@ import SafeStay.dal.ConnectionManager;
 import SafeStay.dal.EndUsersDao;
 import SafeStay.dal.IncidentsDao;
 import SafeStay.dal.MaintainsDao;
+import SafeStay.dal.MostIncidentsWeekday;
+import SafeStay.dal.MostOffenseForLocation;
 import SafeStay.dal.OffenseDao;
+import SafeStay.dal.PercentageRequestsHighestLocations;
 import SafeStay.dal.RatioReviewRecommendation;
+import SafeStay.dal.RatioShootingPerLocation;
 import SafeStay.dal.RecommendationsDao;
 import SafeStay.dal.RequestsDao;
 import SafeStay.dal.ReviewsDao;
@@ -31,11 +33,13 @@ import SafeStay.model.EndUsers;
 import SafeStay.model.Incidents;
 import SafeStay.model.Incidents.Shootings;
 import SafeStay.model.Incidents.UCRs;
+import SafeStay.model.LocationRequestPercentage;
 import SafeStay.model.Maintains;
 import SafeStay.model.Offense;
 import SafeStay.model.Recommendations;
 import SafeStay.model.Requests;
 import SafeStay.model.Reviews;
+import SafeStay.model.ShootingLocation;
 import SafeStay.model.UserAddressLogs;
 import SafeStay.model.Users;
 
@@ -44,7 +48,8 @@ import SafeStay.model.Users;
  *
  */
 public class Inserter {
-
+	private static final Character INFILE_FIELD_SEPARATION_CHAR = ',';
+	private static final Character INFILE_ENCLOSED_CHAR = '"';
 	protected ConnectionManager connectionManager;
 
 	protected Inserter() {
@@ -97,7 +102,7 @@ public class Inserter {
 
 			// Test Offense
 			OffenseDao offenseDao = OffenseDao.getInstance();
-			offenseDao.importData("/Users/grishmathakkar/Desktop/Offense.csv", "Offense");
+			offenseDao.importData("C:/Users/Prachi/Desktop/DBMS/Offense.csv", "Offense");
 			Offense offense = new Offense(120, "DRUNK DRIVING");
 			offense = offenseDao.create(offense);
 			offense = offenseDao.getOffenseByOffenseCode(offense.getOffenceCode());
@@ -109,7 +114,7 @@ public class Inserter {
 
 			// Test Address
 			AddressDao addressDao = AddressDao.getInstance();
-			addressDao.importData("/Users/grishmathakkar/Desktop/Address.csv", "Address");
+			addressDao.importData("C:/Users/Prachi/Desktop/DBMS/Address.csv", "Address");
 			Address address = new Address("(42.312007476, -71.06650934)", "Cliff Street", "42.312007476",
 					"-71.06650934");
 			address = addressDao.create(address);
@@ -124,7 +129,7 @@ public class Inserter {
 			String str2 = "2018-03-17";
 			Date date2 = Date.valueOf(str2);
 			IncidentsDao incidentsDao = IncidentsDao.getInstance();
-			incidentsDao.importData();
+			incidentsDao.importData("C:/Users/Prachi/Desktop/DBMS/NewIncidents.csv", "Incidents");
 			Incidents incidents = new Incidents(offense, "Heath Street", 332, Shootings.N, date2, "Saturday", 2300,
 					UCRs.PartThree, address);
 			incidents = incidentsDao.create(incidents);
@@ -195,7 +200,7 @@ public class Inserter {
 			System.out.println("Requests with id 1: " + requests.getRequestId());
 			requestsList = requestsDao.getRequestsByLocation(requests.getAddress().getLocation());
 			System.out.println(requestsList.size());
-			requests = requestsDao.delete(requests);
+			// requests = requestsDao.delete(requests);
 
 			// Test UserAddressLogs
 			UserAddressLogsDao userAddressLogsDao = UserAddressLogsDao.getInstance();
@@ -209,6 +214,39 @@ public class Inserter {
 			userAddressLogsList = userAddressLogsDao.getUALogsByUserName(userAddressLogs.getEndUser().getUserName());
 			System.out.println(userAddressLogsList.size());
 			userAddressLogs = userAddressLogsDao.delete(userAddressLogs);
+
+			// Test location request
+			System.out.println("Locations with most requests and their request count along with the percentage");
+			PercentageRequestsHighestLocations perReq = PercentageRequestsHighestLocations.getInstance();
+			for (LocationRequestPercentage s : perReq.getMostRequestedLocations()) {
+
+				System.out.println(s.getLocStreet());
+				System.out.println(s.getHighRequest());
+				System.out.println(s.getTotalRequest());
+				System.out.println(s.getPercentage());
+
+			}
+
+			// Test Weekday with most incidents - query 5
+			System.out.println("Weekday with most incidents is : ");
+			MostIncidentsWeekday mostday = MostIncidentsWeekday.getInstance();
+			System.out.println(mostday.getWeekdayMostIncidents());
+
+			// Test most offense for location - query2
+
+			System.out.println("Most offense in the location : ");
+			MostOffenseForLocation mostOffense = MostOffenseForLocation.getInstance();
+			System.out.println(mostOffense.getOffenseCodeForLocation());
+
+			// Test Shooting Percentages - query 6
+			System.out.println("Ratio of shooting incidents to the overall incidents that occur in a system");
+			RatioShootingPerLocation ratioshooting = RatioShootingPerLocation.getInstance();
+
+			System.out.println(ratioshooting.getRatioshootingIncidents().size());
+			for (ShootingLocation s : ratioshooting.getRatioshootingIncidents()) {
+				// System.out.println(x);
+				System.out.println(s.getLocation() + " : " + s.getRatio());
+			}
 
 			// Test RatioReviewRecommendations
 			Reviews reviews2 = new Reviews("Safe area", endUsers, address);
@@ -245,6 +283,7 @@ public class Inserter {
 				System.out.println(kkmm + ": " + m);
 				++kkm;
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
