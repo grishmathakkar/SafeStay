@@ -7,7 +7,7 @@ $password=$_POST['password'];
 session_start();
 $_SESSION["sid"]=$username;
 $sid=$_SESSION['sid'];
-$result = mysql_query("SELECT * FROM owneracc");
+$result = mysql_query("SELECT * FROM endusers");
 while($row=mysql_fetch_array($result))
 {
 $user=$row['email']; 
@@ -18,7 +18,7 @@ for($i=1;$i<=$num; $i++){
 
 if($username == $user && $password==$pass)
 {
-header("Location: http://localhost/soas/start/soas/testmod6.php");
+header("Location: http://localhost/.php");
 }
 else if($password != $pass ||$username != $user )
 {

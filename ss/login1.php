@@ -7,7 +7,7 @@ session_start();
 $_SESSION["sid"]=$username;
 $sid=$_SESSION['sid'];
 //First lets get the username and password from the user
-$result = mysql_query("SELECT * FROM takeracc");
+$result = mysql_query("SELECT * FROM administratords");
 while($row=mysql_fetch_array($result))
 {
 $user=$row['email']; 
