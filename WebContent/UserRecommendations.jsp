@@ -21,6 +21,7 @@
                 <th>UserName</th>
                 <th>Location</th>
                 <th>Add</th>
+                <th>Update</th>
                 <th>Delete</th>
             </tr>
             <c:forEach items="${recommendations}" var="recommendation" >
@@ -32,6 +33,7 @@
                     <td><c:out value="${recommendation.getEndusers().getUserName()}" /></td>
                     <td><c:out value="${recommendation.getAddress().getLocation()}" /></td>
                     <td><a href="recommendationcreate?recommendationid=<c:out value="${recommendation.getRecommendationId()}"/>">Add</a></td>
+                    <td><a href="updaterecommendation?recommendationid=<c:out value="${recommendation.getRecommendationId()}"/>">Update</a></td>
                     <td><a href="deleterecommendation?recommendationid=<c:out value="${recommendation.getRecommendationId()}"/>">Delete</a></td>
                 </tr>
             </c:forEach>

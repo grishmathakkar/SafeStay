@@ -1,7 +1,6 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -39,8 +38,9 @@
 			<th>Email</th>
 			<th>Phone</th>
 			<th>DeleteAdmin</th>
+			<th>AddIncident</th>
+			<th>Add User</th>
 		</tr>
-		<%-- 		<c:forEach items="${endUsers}" var="endUser"> --%>
 		<tr>
 			<td><c:out value="${admins.getUserName()}" /></td>
 			<td><c:out value="${admins.getPassword()}" /></td>
@@ -51,8 +51,11 @@
 			<td><c:out value="${admins.getPhone()}" /></td>
 			<td><a
 				href="admindelete?username=<c:out value="${admins.getUserName()}"/>">Delete</a></td>
+			<td><a
+				href="incidentcreate?username=<c:out value="${admins.getUserName()}"/>">AddIncident</a></td>
+			<td><a
+				href="usercreate?username=<c:out value="${admins.getUserName()}"/>">AddUser</a></td>	
 		</tr>
-		<%-- 		</c:forEach> --%>
 	</table>
 </body>
 </html>

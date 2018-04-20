@@ -23,9 +23,6 @@
 		</p>
 	</form>
 	<br />
-	<div id="userCreate">
-		<a href="usercreate">Create EndUser</a>
-	</div>
 	<br />
 	<h1>Matching EndUsers</h1>
 	<table border="1">
@@ -41,23 +38,34 @@
 			<th>DeleteUser</th>
 			<th>Reviews</th>
 			<th>Recommendations</th>
+			<th>Add Address history</th>
+			<th>Add Comment on incident</th>
 		</tr>
-<%-- 		<c:forEach items="${endUsers}" var="endUser"> --%>
-			<tr>
-				<td><c:out value="${endUsers.getUserName()}" /></td>
-				<td><c:out value="${endUsers.getPassword()}" /></td>
-				<td><c:out value="${endUsers.getFirstName()}" /></td>
-				<td><c:out value="${endUsers.getLastName()}" /></td>
-				<td><c:out value="${endUsers.getAge()}" /></td>
-				<td><c:out value="${endUsers.getEmail()}" /></td>
-				<td><c:out value="${endUsers.getPhone()}" /></td>
-				<td><fmt:formatDate value="${endUsers.getDateOfBirth()}"
-						pattern="yyyy-MM-dd" /></td>
-				<td><a href="userdelete?username=<c:out value="${endUsers.getUserName()}"/>">Delete</a></td>
-				<td><a href="userreview?username=<c:out value="${endUsers.getUserName()}"/>">Reviews</a></td>
-				<td><a href="userrecommendations?username=<c:out value="${endUsers.getUserName()}"/>">Recommendations</a></td>
-			</tr>
-<%-- 		</c:forEach> --%>
+		<%-- 		<c:forEach items="${endUsers}" var="endUser"> --%>
+		<tr>
+			<td><c:out value="${endUsers.getUserName()}" /></td>
+			<td><c:out value="${endUsers.getPassword()}" /></td>
+			<td><c:out value="${endUsers.getFirstName()}" /></td>
+			<td><c:out value="${endUsers.getLastName()}" /></td>
+			<td><c:out value="${endUsers.getAge()}" /></td>
+			<td><c:out value="${endUsers.getEmail()}" /></td>
+			<td><c:out value="${endUsers.getPhone()}" /></td>
+			<td><fmt:formatDate value="${endUsers.getDateOfBirth()}"
+					pattern="yyyy-MM-dd" /></td>
+			<td><a
+				href="userdelete?username=<c:out value="${endUsers.getUserName()}"/>">Delete</a></td>
+			<td><a
+				href="userreview?username=<c:out value="${endUsers.getUserName()}"/>">Reviews</a></td>
+			<td><a
+				href="userrecommendations?username=<c:out value="${endUsers.getUserName()}"/>">Recommendations</a></td>
+			<td><a
+				href="useraddresshistory?username=<c:out value = "${endusers.getUserName()}"/>">Add
+					Address History</a></td>
+			<td><a
+				href="commentonincident?username=<c:out value = "${endusers.getUserName()}"/>">Add
+					Comment on Incident</a></td>
+		</tr>
+		<%-- 		</c:forEach> --%>
 	</table>
 </body>
 </html>
